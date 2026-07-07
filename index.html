@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Diego Godoy — Fullstack Mobile Developer</title>
+<meta name="description" content="Portfolio of Diego Godoy Martinez, Fullstack Mobile Developer with 5 years of experience in React, React Native and TypeScript." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --paper:     #F3F1FF;
+    --ink:       #211A3A;
+    --ink-soft:  #5F567F;
+    --grape:     #6D4AFF;
+    --tangerine: #FF8A3D;
+    --bubblegum: #FF5D8F;
+    --sky:       #2FC4EF;
+    --lime:      #B6F04A;
+    --card:      #FFFFFF;
+
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-lg: 10px 10px 0 var(--ink);
+    --border: 3px solid var(--ink);
+    --spring: cubic-bezier(.34, 1.56, .64, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.5;
+    background-image: radial-gradient(var(--ink) 1.1px, transparent 1.2px);
+    background-size: 26px 26px;
+    background-position: -13px -13px;
+    background-attachment: fixed;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--paper);
+    opacity: .82;
+    z-index: -1;
+  }
+
+  a { color: inherit; }
+
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 22px; }
+
+  /* ── top bar ─────────────────────────────────────── */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0 8px;
+  }
+  .brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .92rem; display: flex; align-items: center; gap: 10px;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dots span { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); }
+  .dots span:nth-child(1){ background: var(--bubblegum); }
+  .dots span:nth-child(2){ background: var(--tangerine); }
+  .dots span:nth-child(3){ background: var(--lime); }
+
+  .toplink {
+    font-family: 'JetBrains Mono', monospace; font-size: .85rem; text-decoration: none;
+    background: var(--card); border: var(--border); border-radius: 999px;
+    padding: 7px 14px; box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .18s var(--spring), box-shadow .18s var(--spring);
+  }
+  .toplink:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+
+  .topright { display: flex; align-items: center; gap: 10px; }
+  .lang {
+    display: inline-flex; font-family: 'JetBrains Mono', monospace; font-size: .8rem;
+    border: var(--border); border-radius: 999px; overflow: hidden; box-shadow: 3px 3px 0 var(--ink);
+  }
+  .lang a {
+    padding: 7px 12px; text-decoration: none; background: var(--card);
+    transition: background .15s ease;
+  }
+  .lang a + a { border-left: 2px solid var(--ink); }
+  .lang a.active { background: var(--grape); color: #fff; }
+  .lang a:not(.active):hover { background: var(--paper); }
+
+  /* ── hero ────────────────────────────────────────── */
+  .hero {
+    padding: 40px 0 20px; display: grid;
+    grid-template-columns: 1.4fr .9fr; gap: 30px; align-items: center;
+  }
+  .wave { display: inline-block; transform-origin: 70% 70%; }
+
+  h1 {
+    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-size: clamp(2.4rem, 6.5vw, 4rem); line-height: 1.02;
+    letter-spacing: -.01em; margin: 0 0 6px;
+  }
+  h1 .name { color: var(--grape); }
+  .role {
+    font-family: 'JetBrains Mono', monospace; font-size: .95rem;
+    color: var(--ink-soft); margin: 0 0 18px;
+  }
+
+  .tagline {
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: var(--ink-soft);
+    max-width: 34ch; margin: 0 0 22px;
+  }
+  .tagline b { color: var(--ink); font-weight: 600; }
+
+  .status {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: 'JetBrains Mono', monospace; font-size: .82rem;
+    background: var(--card); border: var(--border); border-radius: 999px;
+    padding: 7px 15px; box-shadow: 4px 4px 0 var(--ink); margin-bottom: 26px;
+  }
+  .blip {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--lime); border: 2px solid var(--ink);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50%     { transform: scale(1.35); opacity: .55; }
+  }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 1rem;
+    text-decoration: none; padding: 12px 20px; border: var(--border);
+    border-radius: 14px; box-shadow: var(--shadow); background: var(--card);
+    transition: transform .18s var(--spring), box-shadow .18s var(--spring);
+  }
+  .btn:hover  { transform: translate(-3px,-3px); box-shadow: var(--shadow-lg); }
+  .btn:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 var(--ink); }
+  .btn.primary { background: var(--grape); color: #fff; }
+
+  .blob-wrap { display: flex; justify-content: center; }
+  .blob {
+    width: 210px; height: 210px; background: var(--tangerine);
+    border: var(--border); box-shadow: var(--shadow-lg);
+    display: grid; place-items: center; font-size: 5rem;
+    border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+    animation: morph 9s ease-in-out infinite; will-change: transform, border-radius;
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; }
+    33%     { border-radius: 58% 42% 44% 56% / 44% 58% 42% 56%; }
+    66%     { border-radius: 40% 60% 52% 48% / 60% 42% 58% 40%; }
+  }
+
+  /* ── sections ────────────────────────────────────── */
+  section { padding: 44px 0; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: .78rem;
+    text-transform: uppercase; letter-spacing: .12em;
+    color: var(--ink-soft); margin: 0 0 4px;
+  }
+  h2 {
+    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 26px;
+  }
+
+  /* ── about ───────────────────────────────────────── */
+  .about {
+    background: var(--card); border: var(--border); border-radius: 20px;
+    box-shadow: var(--shadow); padding: 30px;
+  }
+  .about p { margin: 0 0 16px; font-size: 1.05rem; }
+  .about p:last-child { margin-bottom: 0; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 10px 22px;
+    font-family: 'JetBrains Mono', monospace; font-size: .82rem;
+    color: var(--ink-soft); padding-top: 18px; margin-top: 4px;
+    border-top: 2px dashed var(--ink);
+  }
+  .meta span { display: inline-flex; align-items: center; gap: 7px; }
+
+  /* ── experience sticker board ────────────────────── */
+  .board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .card {
+    background: var(--card); border: var(--border); border-radius: 18px;
+    box-shadow: var(--shadow); padding: 22px;
+    display: flex; flex-direction: column;
+    transition: transform .22s var(--spring), box-shadow .22s var(--spring);
+  }
+  .card:nth-child(4n+1) { transform: rotate(-1.6deg); }
+  .card:nth-child(4n+2) { transform: rotate(1.4deg); }
+  .card:nth-child(4n+3) { transform: rotate(1deg); }
+  .card:nth-child(4n+4) { transform: rotate(-1.2deg); }
+  .card:hover, .card:focus-within {
+    transform: rotate(0) translateY(-6px); box-shadow: var(--shadow-lg);
+  }
+
+  .tag {
+    display: inline-block; width: 44px; height: 8px; border-radius: 999px;
+    border: 2px solid var(--ink); margin-bottom: 14px;
+  }
+  .card:nth-child(4n+1) .tag { background: var(--bubblegum); }
+  .card:nth-child(4n+2) .tag { background: var(--sky); }
+  .card:nth-child(4n+3) .tag { background: var(--lime); }
+  .card:nth-child(4n+4) .tag { background: var(--tangerine); }
+
+  .card h3 {
+    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-size: 1.25rem; margin: 0 0 2px;
+  }
+  .card .when {
+    font-family: 'JetBrains Mono', monospace; font-size: .74rem;
+    color: var(--ink-soft); margin: 0 0 12px;
+  }
+  .card p { margin: 0 0 16px; color: var(--ink-soft); font-size: .95rem; }
+
+  .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+  .chip {
+    font-family: 'JetBrains Mono', monospace; font-size: .72rem;
+    padding: 4px 9px; border: 2px solid var(--ink);
+    border-radius: 7px; background: var(--paper);
+  }
+
+  /* ── skills ──────────────────────────────────────── */
+  .skills { display: flex; flex-wrap: wrap; gap: 12px; }
+  .skill {
+    font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 1rem;
+    padding: 9px 16px; border: var(--border); border-radius: 999px;
+    background: var(--card); box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .18s var(--spring); cursor: default;
+  }
+  .skill:hover { transform: translateY(-4px) rotate(-2deg); }
+  .skill:nth-child(3n+1):hover { background: var(--lime); }
+  .skill:nth-child(3n+2):hover { background: var(--sky); }
+  .skill:nth-child(3n+3):hover { background: var(--bubblegum); }
+
+  /* ── footer ──────────────────────────────────────── */
+  footer {
+    text-align: center; padding: 50px 0 60px;
+    font-family: 'JetBrains Mono', monospace; font-size: .82rem; color: var(--ink-soft);
+  }
+  footer a { color: var(--grape); text-decoration: none; }
+
+  /* ── entrance animation ──────────────────────────── */
+  .rise { opacity: 0; transform: translateY(16px); animation: rise .6s var(--spring) forwards; }
+  .rise:nth-child(1){ animation-delay: .05s; }
+  .rise:nth-child(2){ animation-delay: .13s; }
+  .rise:nth-child(3){ animation-delay: .21s; }
+  .rise:nth-child(4){ animation-delay: .29s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  a:focus-visible, .skill:focus-visible { outline: 3px solid var(--grape); outline-offset: 3px; }
+
+  /* ── responsive ──────────────────────────────────── */
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 8px; }
+    .blob-wrap { order: -1; justify-content: flex-start; }
+    .blob { width: 130px; height: 130px; font-size: 3rem; }
+    .board { grid-template-columns: 1fr; }
+    .card { transform: none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto; }
+    .rise { opacity: 1; transform: none; }
+    .card, .btn, .skill, .toplink { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ── TOP BAR ─────────────────────────────────────── -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="dots"><span></span><span></span><span></span></span>
+      diego.dev
+    </div>
+    <div class="topright">
+      <a class="toplink" href="https://github.com/Izzyll" target="_blank" rel="noopener">github ↗</a>
+    </div>
+  </header>
+
+  <!-- ── HERO ────────────────────────────────────────── -->
+  <section class="hero" style="padding-top:34px;">
+    <div>
+      <h1 class="rise">
+        hi, i'm <span class="name">Diego</span>
+        <span class="wave" id="wave">👋</span>
+      </h1>
+      <p class="role rise">Fullstack Mobile Developer</p>
+      <p class="tagline rise">I build <b>mobile</b> and <b>web</b> apps that people use every day — across <b>banking</b>, <b>health</b> and <b>retail</b>.</p>
+
+      <div class="rise">
+        <span class="status">
+          <span class="blip"></span>
+          <!-- EDIT: change your current status -->
+          open to new opportunities
+        </span>
+      </div>
+
+      <div class="cta-row rise">
+        <a class="btn primary" href="#experience">my experience</a>
+        <!-- Upload the PDF next to this file so the button works -->
+        <a class="btn" href="./Diego_Godoy_FE_CV.pdf" target="_blank" rel="noopener">download CV</a>
+        <a class="btn" href="mailto:dgodoy9725@gmail.com">get in touch</a>
+      </div>
+    </div>
+
+    <div class="blob-wrap rise">
+      <div class="blob" id="blob" aria-hidden="true">📱</div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────── -->
+  <section id="about">
+    <p class="eyebrow">the short version</p>
+    <h2>About me</h2>
+    <div class="about">
+      <p>Computer Engineer with <b>5 years of experience</b> building frontend and mobile applications using React, React Native, Next.js, Vite, TypeScript and Node.js.</p>
+      <p>I've worked on projects across <b>banking, health and retail</b>, building scalable interfaces, optimizing performance, and integrating modern API-based architectures grounded in SOLID principles. I collaborate closely with UX/UI teams, implement design systems, and deploy to AWS/GCP under agile methodologies.</p>
+      <div class="meta">
+        <span>🎓 Computer Engineering · INACAP (2017–2020)</span>
+        <span>📍 Rancagua, Chile</span>
+        <span>✉️ dgodoy9725@gmail.com</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ───────────────────────────────────── -->
+  <section id="experience">
+    <p class="eyebrow">where i've built things</p>
+    <h2>Experience</h2>
+
+    <div class="board">
+
+      <article class="card">
+        <span class="tag"></span>
+        <h3>Cruz Verde · Femsa</h3>
+        <p class="when">Frontend Engineer · Nov 2024 – Jul 2026</p>
+        <p>Key role in migrating the native Farmacias Cruz Verde Chile app to React Native Expo. Built push notifications, deeplinks and refactors focused on performance and navigation.</p>
+        <div class="stack">
+          <span class="chip">React Native</span>
+          <span class="chip">Expo</span>
+          <span class="chip">TypeScript</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag"></span>
+        <h3>MetLife</h3>
+        <p class="when">Frontend Engineer · Apr 2024 – Aug 2024</p>
+        <p>Frontend features in React Native and TypeScript, with native modules in Kotlin and Swift for specific integrations. State management with Redux, Sagas and Context API.</p>
+        <div class="stack">
+          <span class="chip">React Native</span>
+          <span class="chip">Kotlin</span>
+          <span class="chip">Swift</span>
+          <span class="chip">Redux</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag"></span>
+        <h3>Banco BICE</h3>
+        <p class="when">Frontend Engineer · Apr 2023 – Mar 2024</p>
+        <p>Improved the digital experience and banking operations for users. Frontend architectures with React Native, Redux, RTK Query and Context API, plus analytics and remote config.</p>
+        <div class="stack">
+          <span class="chip">React Native</span>
+          <span class="chip">RTK Query</span>
+          <span class="chip">Redux</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag"></span>
+        <h3>Enara Health · Startup</h3>
+        <p class="when">Fullstack Developer · May 2022 – Mar 2023</p>
+        <p>Nutrition app in React Native and TypeScript, with microservices in Node.js, Express and MongoDB. Shipped to the App Store and Google Play.</p>
+        <div class="stack">
+          <span class="chip">React Native</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">MongoDB</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag"></span>
+        <h3>Agilesoft</h3>
+        <p class="when">Frontend Developer · Dec 2021 – May 2022</p>
+        <p>BanChile's "Mi Seguro" app in React Native. Reusable interfaces with Redux, Context API and Custom Hooks, working alongside UX/UI teams.</p>
+        <div class="stack">
+          <span class="chip">React Native</span>
+          <span class="chip">Redux</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag"></span>
+        <h3>DynamicLab</h3>
+        <p class="when">Frontend &amp; Fullstack · Jun 2020 – Dec 2021</p>
+        <p>Web apps with React, Next.js and TypeScript, optimized with Vite. Backend with Node.js and microservices, MongoDB/PostgreSQL and AWS deployments.</p>
+        <div class="stack">
+          <span class="chip">Next.js</span>
+          <span class="chip">React</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">AWS</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── SKILLS ───────────────────────────────────────── -->
+  <section id="skills">
+    <p class="eyebrow">the toolbox</p>
+    <h2>Tech stack</h2>
+    <div class="skills">
+      <span class="skill" tabindex="0">React</span>
+      <span class="skill" tabindex="0">React Native</span>
+      <span class="skill" tabindex="0">Next.js</span>
+      <span class="skill" tabindex="0">TypeScript</span>
+      <span class="skill" tabindex="0">Expo</span>
+      <span class="skill" tabindex="0">Vite</span>
+      <span class="skill" tabindex="0">Redux</span>
+      <span class="skill" tabindex="0">RTK Query</span>
+      <span class="skill" tabindex="0">Node.js</span>
+      <span class="skill" tabindex="0">NestJS</span>
+      <span class="skill" tabindex="0">Express</span>
+      <span class="skill" tabindex="0">MongoDB</span>
+      <span class="skill" tabindex="0">PostgreSQL</span>
+      <span class="skill" tabindex="0">AWS</span>
+      <span class="skill" tabindex="0">GCP</span>
+      <span class="skill" tabindex="0">Firebase</span>
+      <span class="skill" tabindex="0">CI/CD</span>
+      <span class="skill" tabindex="0">Figma</span>
+      <span class="skill" tabindex="0">SOLID</span>
+      <span class="skill" tabindex="0">Clean Architecture</span>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer>
+  made with too much coffee ·
+  <a href="https://github.com/Izzyll" target="_blank" rel="noopener">Diego Godoy</a>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const wave = document.getElementById('wave');
+  function doWave() {
+    if (reduce) return;
+    wave.animate(
+      [{ transform: 'rotate(0)' }, { transform: 'rotate(18deg)' },
+       { transform: 'rotate(-8deg)' }, { transform: 'rotate(14deg)' },
+       { transform: 'rotate(0)' }],
+      { duration: 700, easing: 'ease-in-out' }
+    );
+  }
+  wave.addEventListener('mouseenter', doWave);
+  if (!reduce) { doWave(); setInterval(doWave, 5000); }
+
+  const blob = document.getElementById('blob');
+  if (!reduce) {
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth  - .5) * 22;
+      const y = (e.clientY / window.innerHeight - .5) * 22;
+      blob.style.translate = x + 'px ' + y + 'px';
+    });
+  }
+</script>
+
+</body>
+</html>
