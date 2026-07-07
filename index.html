@@ -226,6 +226,13 @@
     border-radius: 7px; background: var(--paper);
   }
 
+  .card-links { display: flex; gap: 16px; margin-top: 14px; }
+  .card-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: .82rem; font-weight: 500;
+    text-decoration: none; border-bottom: 2px solid var(--grape); padding-bottom: 1px;
+  }
+  .card-links a:hover { color: var(--grape); }
+
   /* ── skills ──────────────────────────────────────── */
   .skills { display: flex; flex-wrap: wrap; gap: 12px; }
   .skill {
@@ -278,10 +285,6 @@
 
   <!-- ── TOP BAR ─────────────────────────────────────── -->
   <header class="topbar">
-    <div class="brand">
-      <span class="dots"><span></span><span></span><span></span></span>
-      diego.dev
-    </div>
     <div class="topright">
       <a class="toplink" href="https://github.com/Izzyll" target="_blank" rel="noopener">github ↗</a>
     </div>
@@ -413,6 +416,31 @@
         </div>
       </article>
 
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ─────────────────────────────────────── -->
+  <section id="projects">
+    <p class="eyebrow">what i build on my own</p>
+    <h2>Projects</h2>
+
+    <div class="board">
+      <article class="card">
+        <span class="tag"></span>
+        <h3>Rebun</h3>
+        <p class="when">Personal project · React Native + Expo</p>
+        <p>Mobile app with Expo Router and TypeScript: video playback, maps with MapLibre, push notifications via Firebase and multi-language support (i18n). State handled with Zustand and React Query, persistence with MMKV.</p>
+        <div class="stack">
+          <span class="chip">Expo</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">Zustand</span>
+          <span class="chip">React Query</span>
+          <span class="chip">MapLibre</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/izzyll/rebun-app" target="_blank" rel="noopener">code ↗</a>
+        </div>
+      </article>
     </div>
   </section>
 
