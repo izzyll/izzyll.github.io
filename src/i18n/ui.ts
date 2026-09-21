@@ -50,7 +50,7 @@ const es: Record<UIKey, string> = {
   'meta.description': 'Portafolio de Diego Godoy Martinez, Desarrollador Fullstack Mobile con 5 años de experiencia en React, React Native y TypeScript.',
   'lang.label': 'Idioma',
 
-  'hero.hi': 'hola, soy',
+  'hero.hi': 'Hola, soy',
   'hero.role': 'Desarrollador Fullstack Mobile',
   'hero.tagline': 'Construyo apps <b>móviles</b> y <b>web</b> que la gente usa todos los días — en <b>banca</b>, <b>salud</b> y <b>retail</b>.',
   'hero.status': 'abierto a nuevas oportunidades',
