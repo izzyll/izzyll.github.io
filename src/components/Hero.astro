@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import drift from '../assets/drift.jpg';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -33,9 +35,18 @@ const t = useTranslations(lang);
     </div>
   </div>
 
-  <div class="blob-wrap rise">
-    <div class="blob" id="blob" aria-hidden="true">📱</div>
-  </div>
+  <figure class="blob-wrap rise">
+    <div class="blob" id="blob">
+      <Image
+        src={drift}
+        alt={t('hero.photo.alt')}
+        widths={[300, 480, 640]}
+        sizes="(max-width: 760px) 240px, 300px"
+        loading="eager"
+      />
+    </div>
+    <figcaption class="funfact" set:html={`🏁 ${t('hero.funfact')}`} />
+  </figure>
 </section>
 
 <script>
@@ -67,18 +78,18 @@ const t = useTranslations(lang);
 <style>
   .hero {
     padding: 34px 0 20px; display: grid;
-    grid-template-columns: 1.4fr .9fr; gap: 30px; align-items: center;
+    grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center;
   }
   .wave { display: inline-block; transform-origin: 70% 70%; }
 
   h1 {
-    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-family: var(--font-display); font-weight: 600;
     font-size: clamp(2.4rem, 6.5vw, 4rem); line-height: 1.02;
     letter-spacing: -.01em; margin: 0 0 6px;
   }
   .name { color: var(--grape); }
   .role {
-    font-family: 'JetBrains Mono', monospace; font-size: .95rem;
+    font-family: var(--font-mono); font-size: .95rem;
     color: var(--ink-soft); margin: 0 0 18px;
   }
 
@@ -90,7 +101,7 @@ const t = useTranslations(lang);
 
   .status {
     display: inline-flex; align-items: center; gap: 9px;
-    font-family: 'JetBrains Mono', monospace; font-size: .82rem;
+    font-family: var(--font-mono); font-size: .82rem;
     background: var(--card); border: var(--border); border-radius: 999px;
     padding: 7px 15px; box-shadow: 4px 4px 0 var(--ink); margin-bottom: 26px;
   }
@@ -106,7 +117,7 @@ const t = useTranslations(lang);
 
   .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn {
-    font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 1rem;
+    font-family: var(--font-display); font-weight: 500; font-size: 1rem;
     text-decoration: none; padding: 12px 20px; border: var(--border);
     border-radius: 14px; box-shadow: var(--shadow); background: var(--card);
     transition: transform .18s var(--spring), box-shadow .18s var(--spring);
@@ -115,14 +126,31 @@ const t = useTranslations(lang);
   .btn:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 var(--ink); }
   .btn.primary { background: var(--grape); color: #fff; }
 
-  .blob-wrap { display: flex; justify-content: center; }
+  .blob-wrap {
+    position: relative; margin: 0; width: 300px;
+    display: flex; flex-direction: column; align-items: center;
+  }
   .blob {
-    width: 210px; height: 210px; background: var(--tangerine);
-    border: var(--border); box-shadow: var(--shadow-lg);
-    display: grid; place-items: center; font-size: 5rem;
+    width: 300px; height: 300px; background: var(--tangerine);
+    border: var(--border); box-shadow: var(--shadow-lg); overflow: hidden;
     border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
     animation: morph 9s ease-in-out infinite; will-change: transform, border-radius;
   }
+  .blob img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; object-position: 42% 60%;
+  }
+
+  /* sticker overlapping the bottom of the photo */
+  .funfact {
+    position: relative; z-index: 1; margin-top: -22px;
+    font-family: var(--font-mono); font-size: .86rem;
+    background: var(--lime); border: var(--border); border-radius: 12px;
+    padding: 7px 14px; box-shadow: 4px 4px 0 var(--ink);
+    transform: rotate(-4deg); white-space: nowrap;
+    transition: transform .18s var(--spring);
+  }
+  .funfact:hover { transform: rotate(0) scale(1.05); }
   @keyframes morph {
     0%,100% { border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; }
     33%     { border-radius: 58% 42% 44% 56% / 44% 58% 42% 56%; }
@@ -131,7 +159,8 @@ const t = useTranslations(lang);
 
   @media (max-width: 760px) {
     .hero { grid-template-columns: 1fr; gap: 8px; }
-    .blob-wrap { order: -1; justify-content: flex-start; }
-    .blob { width: 130px; height: 130px; font-size: 3rem; }
+    .blob-wrap { order: -1; align-items: flex-start; margin-bottom: 14px; width: auto; }
+    .blob { width: min(240px, 70vw); height: min(240px, 70vw); }
+    .funfact { font-size: .72rem; margin-top: -14px; }
   }
 </style>

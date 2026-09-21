@@ -23,7 +23,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
   background-image: radial-gradient(var(--ink) 1.1px, transparent 1.2px);
   background-size: 26px 26px;
@@ -46,12 +46,12 @@ a { color: inherit; }
 /* ── sections ────────────────────────────────────── */
 section { padding: 44px 0; }
 .eyebrow {
-  font-family: 'JetBrains Mono', monospace; font-size: .78rem;
+  font-family: var(--font-mono); font-size: .78rem;
   text-transform: uppercase; letter-spacing: .12em;
   color: var(--ink-soft); margin: 0 0 4px;
 }
 h2 {
-  font-family: 'Fredoka', sans-serif; font-weight: 600;
+  font-family: var(--font-display); font-weight: 600;
   font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 26px;
 }
 
@@ -69,3 +69,7 @@ a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--grape); out
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .rise { opacity: 1; transform: none; }
 }
+
+/* The h1 is the LCP element: browsers don't count it while opacity is 0,
+   so it only slides in instead of fading in. */
+h1.rise { opacity: 1; }

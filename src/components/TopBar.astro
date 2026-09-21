@@ -45,7 +45,7 @@ const t = useTranslations(lang);
   .topright { display: flex; align-items: center; gap: 10px; }
 
   .toplink {
-    font-family: 'JetBrains Mono', monospace; font-size: .85rem; text-decoration: none;
+    font-family: var(--font-mono); font-size: .85rem; text-decoration: none;
     background: var(--card); border: var(--border); border-radius: 999px;
     padding: 7px 14px; box-shadow: 3px 3px 0 var(--ink);
     transition: transform .18s var(--spring), box-shadow .18s var(--spring);
@@ -53,7 +53,7 @@ const t = useTranslations(lang);
   .toplink:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
 
   .lang {
-    display: inline-flex; font-family: 'JetBrains Mono', monospace; font-size: .8rem;
+    display: inline-flex; font-family: var(--font-mono); font-size: .8rem;
     border: var(--border); border-radius: 999px; overflow: hidden; box-shadow: 3px 3px 0 var(--ink);
   }
   .lang a {

@@ -52,25 +52,25 @@ const { title, when, description, stack, links = [] } = Astro.props;
   .card:nth-child(4n+4) .tag { background: var(--tangerine); }
 
   h3 {
-    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-family: var(--font-display); font-weight: 600;
     font-size: 1.25rem; margin: 0 0 2px;
   }
   .when {
-    font-family: 'JetBrains Mono', monospace; font-size: .74rem;
+    font-family: var(--font-mono); font-size: .74rem;
     color: var(--ink-soft); margin: 0 0 12px;
   }
   .desc { margin: 0 0 16px; color: var(--ink-soft); font-size: .95rem; }
 
   .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
   .chip {
-    font-family: 'JetBrains Mono', monospace; font-size: .72rem;
+    font-family: var(--font-mono); font-size: .72rem;
     padding: 4px 9px; border: 2px solid var(--ink);
     border-radius: 7px; background: var(--paper);
   }
 
   .card-links { display: flex; gap: 16px; margin-top: 14px; }
   .card-links a {
-    font-family: 'JetBrains Mono', monospace; font-size: .82rem; font-weight: 500;
+    font-family: var(--font-mono); font-size: .82rem; font-weight: 500;
     text-decoration: none; border-bottom: 2px solid var(--grape); padding-bottom: 1px;
   }
   .card-links a:hover { color: var(--grape); }

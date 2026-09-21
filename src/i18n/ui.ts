@@ -10,8 +10,9 @@ export const homePath: Record<Lang, string> = { en: '/', es: '/es/' };
 
 // Strings marked "(html)" contain inline markup and are rendered with set:html.
 const en = {
-  'meta.title': 'Diego Godoy — Fullstack Mobile Developer',
-  'meta.description': 'Portfolio of Diego Godoy Martinez, Fullstack Mobile Developer with 5 years of experience in React, React Native and TypeScript.',
+  'meta.title': 'Diego Godoy — Fullstack Mobile Developer · React Native',
+  'meta.ogAlt': "Diego Godoy, Fullstack Mobile Developer: React, React Native, TypeScript and Node.js",
+  'meta.description': 'Portfolio of Diego Godoy Martinez, Fullstack Mobile Developer in Chile with 5 years of experience in React, React Native, TypeScript and Node.js.',
   'lang.label': 'Language',
 
   'hero.hi': "hi, i'm",
@@ -21,6 +22,8 @@ const en = {
   'hero.cta.experience': 'my experience',
   'hero.cta.cv': 'download CV',
   'hero.cta.contact': 'get in touch',
+  'hero.funfact': '<b>fun fact:</b> I drift as a hobby', // (html)
+  'hero.photo.alt': 'Diego drifting a white car on a race track, tyre smoke behind it',
 
   'about.eyebrow': 'the short version',
   'about.title': 'About me',
@@ -40,14 +43,19 @@ const en = {
   'skills.title': 'Tech stack',
 
   'footer': 'made with too much coffee',
+
+  '404.title': 'Page not found',
+  '404.text': "This page drifted off the track.",
+  '404.back': 'back home',
 };
 
 export type UIKey = keyof typeof en;
 
 // Typed against `en`, so a missing or misspelled key fails `astro check`.
 const es: Record<UIKey, string> = {
-  'meta.title': 'Diego Godoy — Desarrollador Fullstack Mobile',
-  'meta.description': 'Portafolio de Diego Godoy Martinez, Desarrollador Fullstack Mobile con 5 años de experiencia en React, React Native y TypeScript.',
+  'meta.title': 'Diego Godoy — Desarrollador Fullstack Mobile · React Native',
+  'meta.ogAlt': 'Diego Godoy, Desarrollador Fullstack Mobile: React, React Native, TypeScript y Node.js',
+  'meta.description': 'Portafolio de Diego Godoy Martinez, Desarrollador Fullstack Mobile en Chile con 5 años de experiencia en React, React Native, TypeScript y Node.js.',
   'lang.label': 'Idioma',
 
   'hero.hi': 'Hola, soy',
@@ -57,6 +65,8 @@ const es: Record<UIKey, string> = {
   'hero.cta.experience': 'mi experiencia',
   'hero.cta.cv': 'descargar CV',
   'hero.cta.contact': 'contáctame',
+  'hero.funfact': '<b>dato curioso:</b> hago drift como hobby',
+  'hero.photo.alt': 'Diego derrapando un auto blanco en una pista, con humo de neumáticos detrás',
 
   'about.eyebrow': 'la versión corta',
   'about.title': 'Sobre mí',
@@ -76,6 +86,10 @@ const es: Record<UIKey, string> = {
   'skills.title': 'Stack técnico',
 
   'footer': 'hecho con demasiado café',
+
+  '404.title': 'Página no encontrada',
+  '404.text': 'Esta página se salió de la pista.',
+  '404.back': 'volver al inicio',
 };
 
 export const ui: Record<Lang, Record<UIKey, string>> = { en, es };

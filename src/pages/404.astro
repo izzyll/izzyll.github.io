@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { homePath, useTranslations } from '../i18n/ui';
+
+// GitHub Pages serves this for any missing URL, in either language, so it
+// shows both instead of guessing.
+const en = useTranslations('en');
+const es = useTranslations('es');
+---
+
+<Layout lang="en" title={`404 · ${en('404.title')} — Diego Godoy`} noindex>
+  <main class="wrap notfound">
+    <p class="code" aria-hidden="true">404 🏁</p>
+    <h1>{en('404.title')}</h1>
+    <p>{en('404.text')} <span lang="es">{es('404.text')}</span></p>
+    <div class="links">
+      <a class="btn" href={homePath.en}>{en('404.back')}</a>
+      <a class="btn" href={homePath.es} lang="es">{es('404.back')}</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .notfound { min-height: 100vh; display: grid; place-content: center; text-align: center; gap: 6px; }
+  .code { font-family: var(--font-mono); color: var(--grape); margin: 0; font-size: 1.1rem; }
+  h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); margin: 0; }
+  p { color: var(--ink-soft); }
+  p span { display: block; }
+  .links { display: flex; gap: 12px; justify-content: center; margin-top: 10px; }
+  .btn {
+    font-family: var(--font-display); font-weight: 500; text-decoration: none;
+    padding: 12px 20px; border: var(--border); border-radius: 14px;
+    box-shadow: var(--shadow); background: var(--card);
+  }
+  .btn:first-child { background: var(--grape); color: #fff; }
+</style>
