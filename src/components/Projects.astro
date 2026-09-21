@@ -1,0 +1,30 @@
+---
+import { projects } from '../data/portfolio';
+import { useTranslations, type Lang } from '../i18n/ui';
+import Board from './Board.astro';
+import Card from './Card.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="projects">
+  <p class="eyebrow">{t('proj.eyebrow')}</p>
+  <h2>{t('proj.title')}</h2>
+
+  <Board>
+    {projects.map((project) => (
+      <Card
+        title={project.name}
+        when={project.when[lang]}
+        description={project.description[lang]}
+        stack={project.stack}
+        links={project.links.map((link) => ({ href: link.href, label: t(link.label) }))}
+      />
+    ))}
+  </Board>
+</section>

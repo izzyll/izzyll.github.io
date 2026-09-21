@@ -1,0 +1,71 @@
+/* Tokens and page-wide rules. Component styles live in each .astro file. */
+:root {
+  --paper:     #F3F1FF;
+  --ink:       #211A3A;
+  --ink-soft:  #5F567F;
+  --grape:     #6D4AFF;
+  --tangerine: #FF8A3D;
+  --bubblegum: #FF5D8F;
+  --sky:       #2FC4EF;
+  --lime:      #B6F04A;
+  --card:      #FFFFFF;
+
+  --shadow: 6px 6px 0 var(--ink);
+  --shadow-lg: 10px 10px 0 var(--ink);
+  --border: 3px solid var(--ink);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.5;
+  background-image: radial-gradient(var(--ink) 1.1px, transparent 1.2px);
+  background-size: 26px 26px;
+  background-position: -13px -13px;
+  background-attachment: fixed;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  opacity: .82;
+  z-index: -1;
+}
+
+a { color: inherit; }
+
+.wrap { max-width: 940px; margin: 0 auto; padding: 0 22px; }
+
+/* ── sections ────────────────────────────────────── */
+section { padding: 44px 0; }
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: .78rem;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--ink-soft); margin: 0 0 4px;
+}
+h2 {
+  font-family: 'Fredoka', sans-serif; font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 26px;
+}
+
+/* ── entrance animation ──────────────────────────── */
+.rise { opacity: 0; transform: translateY(16px); animation: rise .6s var(--spring) forwards; }
+.rise:nth-child(1){ animation-delay: .05s; }
+.rise:nth-child(2){ animation-delay: .13s; }
+.rise:nth-child(3){ animation-delay: .21s; }
+.rise:nth-child(4){ animation-delay: .29s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--grape); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .rise { opacity: 1; transform: none; }
+}

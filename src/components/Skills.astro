@@ -1,0 +1,33 @@
+---
+import { skills } from '../data/portfolio';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="skills">
+  <p class="eyebrow">{t('skills.eyebrow')}</p>
+  <h2>{t('skills.title')}</h2>
+  <div class="skills">
+    {skills.map((skill) => <span class="skill" tabindex="0">{skill}</span>)}
+  </div>
+</section>
+
+<style>
+  .skills { display: flex; flex-wrap: wrap; gap: 12px; }
+  .skill {
+    font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 1rem;
+    padding: 9px 16px; border: var(--border); border-radius: 999px;
+    background: var(--card); box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .18s var(--spring); cursor: default;
+  }
+  .skill:hover { transform: translateY(-4px) rotate(-2deg); }
+  .skill:nth-child(3n+1):hover { background: var(--lime); }
+  .skill:nth-child(3n+2):hover { background: var(--sky); }
+  .skill:nth-child(3n+3):hover { background: var(--bubblegum); }
+</style>

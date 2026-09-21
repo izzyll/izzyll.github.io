@@ -1,0 +1,137 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="hero">
+  <div>
+    <h1 class="rise">
+      {t('hero.hi')} <span class="name">Diego</span>
+      <span class="wave" id="wave">👋</span>
+    </h1>
+    <p class="role rise">{t('hero.role')}</p>
+    <p class="tagline rise" set:html={t('hero.tagline')} />
+
+    <div class="rise">
+      <span class="status">
+        <span class="blip"></span>
+        <!-- EDIT: change your current status in src/i18n/ui.ts ("hero.status") -->
+        {t('hero.status')}
+      </span>
+    </div>
+
+    <div class="cta-row rise">
+      <a class="btn primary" href="#experience">{t('hero.cta.experience')}</a>
+      <a class="btn" href="/Diego_Godoy_FE_EN_CV.pdf" target="_blank" rel="noopener">{t('hero.cta.cv')}</a>
+      <a class="btn" href="mailto:dgodoy9725@gmail.com">{t('hero.cta.contact')}</a>
+    </div>
+  </div>
+
+  <div class="blob-wrap rise">
+    <div class="blob" id="blob" aria-hidden="true">📱</div>
+  </div>
+</section>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const wave = document.getElementById('wave')!;
+  function doWave() {
+    if (reduce) return;
+    wave.animate(
+      [{ transform: 'rotate(0)' }, { transform: 'rotate(18deg)' },
+       { transform: 'rotate(-8deg)' }, { transform: 'rotate(14deg)' },
+       { transform: 'rotate(0)' }],
+      { duration: 700, easing: 'ease-in-out' }
+    );
+  }
+  wave.addEventListener('mouseenter', doWave);
+  if (!reduce) { doWave(); setInterval(doWave, 5000); }
+
+  const blob = document.getElementById('blob')!;
+  if (!reduce) {
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth  - .5) * 22;
+      const y = (e.clientY / window.innerHeight - .5) * 22;
+      blob.style.translate = x + 'px ' + y + 'px';
+    });
+  }
+</script>
+
+<style>
+  .hero {
+    padding: 34px 0 20px; display: grid;
+    grid-template-columns: 1.4fr .9fr; gap: 30px; align-items: center;
+  }
+  .wave { display: inline-block; transform-origin: 70% 70%; }
+
+  h1 {
+    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    font-size: clamp(2.4rem, 6.5vw, 4rem); line-height: 1.02;
+    letter-spacing: -.01em; margin: 0 0 6px;
+  }
+  .name { color: var(--grape); }
+  .role {
+    font-family: 'JetBrains Mono', monospace; font-size: .95rem;
+    color: var(--ink-soft); margin: 0 0 18px;
+  }
+
+  .tagline {
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: var(--ink-soft);
+    max-width: 34ch; margin: 0 0 22px;
+  }
+  .tagline :global(b) { color: var(--ink); font-weight: 600; }
+
+  .status {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: 'JetBrains Mono', monospace; font-size: .82rem;
+    background: var(--card); border: var(--border); border-radius: 999px;
+    padding: 7px 15px; box-shadow: 4px 4px 0 var(--ink); margin-bottom: 26px;
+  }
+  .blip {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--lime); border: 2px solid var(--ink);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50%     { transform: scale(1.35); opacity: .55; }
+  }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 1rem;
+    text-decoration: none; padding: 12px 20px; border: var(--border);
+    border-radius: 14px; box-shadow: var(--shadow); background: var(--card);
+    transition: transform .18s var(--spring), box-shadow .18s var(--spring);
+  }
+  .btn:hover  { transform: translate(-3px,-3px); box-shadow: var(--shadow-lg); }
+  .btn:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 var(--ink); }
+  .btn.primary { background: var(--grape); color: #fff; }
+
+  .blob-wrap { display: flex; justify-content: center; }
+  .blob {
+    width: 210px; height: 210px; background: var(--tangerine);
+    border: var(--border); box-shadow: var(--shadow-lg);
+    display: grid; place-items: center; font-size: 5rem;
+    border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+    animation: morph 9s ease-in-out infinite; will-change: transform, border-radius;
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; }
+    33%     { border-radius: 58% 42% 44% 56% / 44% 58% 42% 56%; }
+    66%     { border-radius: 40% 60% 52% 48% / 60% 42% 58% 40%; }
+  }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 8px; }
+    .blob-wrap { order: -1; justify-content: flex-start; }
+    .blob { width: 130px; height: 130px; font-size: 3rem; }
+  }
+</style>

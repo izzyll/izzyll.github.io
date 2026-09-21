@@ -1,0 +1,67 @@
+---
+import { homePath, languages, useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<header class="topbar">
+  <div class="topright">
+    <nav class="lang" aria-label={t('lang.label')}>
+      {(Object.entries(languages) as [Lang, string][]).map(([code, label]) => (
+        <a
+          href={homePath[code]}
+          hreflang={code}
+          lang={code}
+          data-lang={code}
+          aria-current={code === lang ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+    <a class="toplink" href="https://github.com/Izzyll" target="_blank" rel="noopener">github ↗</a>
+  </div>
+</header>
+
+<script>
+  // Remember an explicit choice so the root page stops guessing from the device.
+  document.querySelectorAll<HTMLAnchorElement>('.lang a[data-lang]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try { localStorage.setItem('lang', link.dataset.lang!); } catch {}
+    });
+  });
+</script>
+
+<style>
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0 8px;
+  }
+  .topright { display: flex; align-items: center; gap: 10px; }
+
+  .toplink {
+    font-family: 'JetBrains Mono', monospace; font-size: .85rem; text-decoration: none;
+    background: var(--card); border: var(--border); border-radius: 999px;
+    padding: 7px 14px; box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .18s var(--spring), box-shadow .18s var(--spring);
+  }
+  .toplink:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+
+  .lang {
+    display: inline-flex; font-family: 'JetBrains Mono', monospace; font-size: .8rem;
+    border: var(--border); border-radius: 999px; overflow: hidden; box-shadow: 3px 3px 0 var(--ink);
+  }
+  .lang a {
+    padding: 7px 12px; text-decoration: none; background: var(--card);
+    transition: background .15s ease;
+  }
+  .lang a + a { border-left: 2px solid var(--ink); }
+  .lang a[aria-current="page"] { background: var(--grape); color: #fff; }
+  .lang a:not([aria-current]):hover { background: var(--paper); }
+  .lang a:focus-visible { outline-offset: -4px; }
+</style>

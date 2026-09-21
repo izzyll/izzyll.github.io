@@ -1,0 +1,29 @@
+---
+import { experience } from '../data/portfolio';
+import { useTranslations, type Lang } from '../i18n/ui';
+import Board from './Board.astro';
+import Card from './Card.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="experience">
+  <p class="eyebrow">{t('exp.eyebrow')}</p>
+  <h2>{t('exp.title')}</h2>
+
+  <Board>
+    {experience.map((job) => (
+      <Card
+        title={job.company}
+        when={job.when[lang]}
+        description={job.description[lang]}
+        stack={job.stack}
+      />
+    ))}
+  </Board>
+</section>

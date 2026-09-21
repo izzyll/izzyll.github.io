@@ -1,0 +1,15 @@
+---
+// Two-column sticker board; cards must be direct children for the tilt pattern.
+---
+
+<div class="board">
+  <slot />
+</div>
+
+<style>
+  .board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+
+  @media (max-width: 760px) {
+    .board { grid-template-columns: 1fr; }
+  }
+</style>

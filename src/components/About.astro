@@ -1,0 +1,39 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="about">
+  <p class="eyebrow">{t('about.eyebrow')}</p>
+  <h2>{t('about.title')}</h2>
+  <div class="about">
+    <p set:html={t('about.p1')} />
+    <p set:html={t('about.p2')} />
+    <div class="meta">
+      <span>{t('about.edu')}</span>
+      <span>📍 Rancagua, Chile</span>
+      <span>✉️ dgodoy9725@gmail.com</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--card); border: var(--border); border-radius: 20px;
+    box-shadow: var(--shadow); padding: 30px;
+  }
+  .about p { margin: 0 0 16px; font-size: 1.05rem; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 10px 22px;
+    font-family: 'JetBrains Mono', monospace; font-size: .82rem;
+    color: var(--ink-soft); padding-top: 18px; margin-top: 4px;
+    border-top: 2px dashed var(--ink);
+  }
+  .meta span { display: inline-flex; align-items: center; gap: 7px; }
+</style>
