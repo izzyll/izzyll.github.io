@@ -2,9 +2,9 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// User site (izzyll.github.io): served from the domain root, so no `base`.
+// Served from the root of the custom domain (dgdev.cl), so no `base`.
 export default defineConfig({
-  site: 'https://izzyll.github.io',
+  site: 'https://dgdev.cl',
   trailingSlash: 'ignore',
   i18n: {
     locales: ['en', 'es'],
