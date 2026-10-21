@@ -102,7 +102,7 @@ export const projects: Project[] = [
       es: 'Editor web de estructuras de acero liviano (steel framing): dibujas los muros en planta y genera el entramado completo, la techumbre, el cielo raso, el modelo 3D, el despiece de perfiles y el presupuesto de materiales. Incluye plano eléctrico verificado contra la NCh Elec 4/2003, muebles de referencia arrastrables y exportación DXF para AutoCAD.',
     },
     stack: ['Next.js', 'TypeScript', 'Three.js', 'Tailwind CSS', 'Node.js'],
-    links: [{ href: 'https://steel-framing-studio.onrender.com/', label: 'proj.live' }],
+    links: [{ href: 'https://sfs.dgdev.cl/', label: 'proj.live' }],
   },
   {
     name: 'Rebun',
