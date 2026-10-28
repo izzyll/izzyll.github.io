@@ -92,6 +92,22 @@ export const experience: Job[] = [
 
 export const projects: Project[] = [
   {
+    name: 'Hikui Koe',
+    when: {
+      en: 'Personal project · AI desktop app · Electron + LLMs',
+      es: 'Proyecto personal · App de escritorio con IA · Electron + LLMs',
+    },
+    description: {
+      en: 'Real-time AI assistant for presentations and meetings. It listens to the call (Meet, Zoom, Teams), transcribes the other participants with Whisper (Groq or on-device on WebGPU), detects questions and streams a short answer grounded in your own documents through a local RAG pipeline (embeddings + vector search) and LLMs: Ollama on-device, or Groq/Cerebras for a first token in under ~2 s. Prompting tuned against hallucinations (never invents figures), automatic model fallback on rate limits, and a window hidden from screen sharing.',
+      es: 'Asistente de IA en tiempo real para presentaciones y reuniones. Escucha la llamada (Meet, Zoom, Teams), transcribe a los demás participantes con Whisper (Groq o en el dispositivo con WebGPU), detecta las preguntas y genera en streaming una respuesta breve basada en tus propios documentos mediante un pipeline RAG local (embeddings + búsqueda vectorial) y LLMs: Ollama en local, o Groq/Cerebras con el primer token en menos de ~2 s. Prompting ajustado contra alucinaciones (nunca inventa cifras), fallback automático de modelos ante límites de uso y ventana invisible al compartir pantalla.',
+    },
+    stack: ['LLMs', 'RAG', 'Whisper', 'Ollama', 'Groq', 'Electron', 'TypeScript', 'WebGPU'],
+    links: [
+      { href: 'https://hikuikoe.dgdev.cl/', label: 'proj.site' },
+      { href: 'https://github.com/izzyll/hikuikoe', label: 'proj.code' },
+    ],
+  },
+  {
     name: 'Steel Framing Studio',
     when: {
       en: 'Personal project · Next.js + Three.js',
@@ -120,6 +136,7 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
+  'LLMs', 'RAG', 'Prompt Engineering', 'Speech-to-Text (Whisper)', 'Ollama', 'OpenAI-compatible APIs', 'Electron',
   'React', 'React Native', 'Next.js', 'TypeScript', 'Expo', 'Vite', 'Three.js',
   'Tailwind CSS', 'Redux', 'RTK Query', 'Node.js', 'NestJS', 'Express',
   'MongoDB', 'PostgreSQL', 'AWS', 'GCP', 'Firebase', 'CI/CD', 'Figma', 'SOLID',

@@ -10,14 +10,14 @@ export const homePath: Record<Lang, string> = { en: '/', es: '/es/' };
 
 // Strings marked "(html)" contain inline markup and are rendered with set:html.
 const en = {
-  'meta.title': 'Diego Godoy — Fullstack Mobile Developer · React Native',
-  'meta.ogAlt': "Diego Godoy, Fullstack Mobile Developer: React, React Native, TypeScript and Node.js",
-  'meta.description': 'Portfolio of Diego Godoy Martinez, Fullstack Mobile Developer in Chile with 5 years of experience in React, React Native, TypeScript and Node.js.',
+  'meta.title': 'Diego Godoy — Mobile & AI Engineer · React Native · LLMs',
+  'meta.ogAlt': "Diego Godoy, Mobile & AI Engineer: React, React Native, TypeScript, Node.js and LLMs",
+  'meta.description': 'Portfolio of Diego Godoy Martinez, Mobile & AI Engineer in Chile with 5 years of experience in React, React Native, TypeScript and Node.js, building AI apps with LLMs, RAG and real-time speech-to-text.',
   'lang.label': 'Language',
 
   'hero.hi': "hi, i'm",
-  'hero.role': 'Fullstack Mobile Developer',
-  'hero.tagline': 'I build <b>mobile</b> and <b>web</b> apps that people use every day — across <b>banking</b>, <b>health</b> and <b>retail</b>.', // (html)
+  'hero.role': 'Mobile & AI Engineer',
+  'hero.tagline': 'I build <b>mobile</b>, <b>web</b> and <b>AI-powered</b> apps — from <b>banking</b>, <b>health</b> and <b>retail</b> products to real-time assistants with <b>LLMs</b> and <b>RAG</b>.', // (html)
   'hero.status': 'open to new opportunities',
   'hero.cta.experience': 'my experience',
   'hero.cta.cv': 'download CV',
@@ -28,7 +28,7 @@ const en = {
   'about.eyebrow': 'the short version',
   'about.title': 'About me',
   'about.p1': 'Computer Engineer with <b>5 years of experience</b> building frontend and mobile applications using React, React Native, Next.js, Vite, TypeScript and Node.js.', // (html)
-  'about.p2': "I've worked on projects across <b>banking, health and retail</b>, building scalable interfaces, optimizing performance, and integrating modern API-based architectures grounded in SOLID principles. I collaborate closely with UX/UI teams, implement design systems, and deploy to AWS/GCP under agile methodologies.", // (html)
+  'about.p2': "I've worked on projects across <b>banking, health and retail</b>, building scalable interfaces, optimizing performance, and integrating modern API-based architectures grounded in SOLID principles. I collaborate closely with UX/UI teams, implement design systems, and deploy to AWS/GCP under agile methodologies. Today I also build <b>AI products</b>: LLM apps grounded in your own data with RAG, real-time speech-to-text, and local or cloud models.", // (html)
   'about.edu': '🎓 Computer Engineering · INACAP (2017–2020)',
 
   'exp.eyebrow': "where i've built things",
@@ -38,6 +38,7 @@ const en = {
   'proj.title': 'Projects',
   'proj.code': 'code ↗',
   'proj.live': 'live demo ↗',
+  'proj.site': 'website ↗',
 
   'skills.eyebrow': 'the toolbox',
   'skills.title': 'Tech stack',
@@ -53,14 +54,14 @@ export type UIKey = keyof typeof en;
 
 // Typed against `en`, so a missing or misspelled key fails `astro check`.
 const es: Record<UIKey, string> = {
-  'meta.title': 'Diego Godoy — Desarrollador Fullstack Mobile · React Native',
-  'meta.ogAlt': 'Diego Godoy, Desarrollador Fullstack Mobile: React, React Native, TypeScript y Node.js',
-  'meta.description': 'Portafolio de Diego Godoy Martinez, Desarrollador Fullstack Mobile en Chile con 5 años de experiencia en React, React Native, TypeScript y Node.js.',
+  'meta.title': 'Diego Godoy — Mobile & AI Engineer · React Native · LLMs',
+  'meta.ogAlt': 'Diego Godoy, Mobile & AI Engineer: React, React Native, TypeScript, Node.js y LLMs',
+  'meta.description': 'Portafolio de Diego Godoy Martinez, Mobile & AI Engineer en Chile con 5 años de experiencia en React, React Native, TypeScript y Node.js, creando apps con IA: LLMs, RAG y transcripción de voz en tiempo real.',
   'lang.label': 'Idioma',
 
   'hero.hi': 'Hola, soy',
-  'hero.role': 'Desarrollador Fullstack Mobile',
-  'hero.tagline': 'Construyo apps <b>móviles</b> y <b>web</b> que la gente usa todos los días — en <b>banca</b>, <b>salud</b> y <b>retail</b>.',
+  'hero.role': 'Mobile & AI Engineer',
+  'hero.tagline': 'Construyo apps <b>móviles</b>, <b>web</b> y <b>con IA</b> — desde productos de <b>banca</b>, <b>salud</b> y <b>retail</b> hasta asistentes en tiempo real con <b>LLMs</b> y <b>RAG</b>.',
   'hero.status': 'abierto a nuevas oportunidades',
   'hero.cta.experience': 'mi experiencia',
   'hero.cta.cv': 'descargar CV',
@@ -71,7 +72,7 @@ const es: Record<UIKey, string> = {
   'about.eyebrow': 'la versión corta',
   'about.title': 'Sobre mí',
   'about.p1': 'Ingeniero en Informática con <b>5 años de experiencia</b> desarrollando aplicaciones frontend y móviles con React, React Native, Next.js, Vite, TypeScript y Node.js.',
-  'about.p2': 'He trabajado en proyectos de <b>banca, salud y retail</b>, construyendo interfaces escalables, optimizando rendimiento e integrando arquitecturas modernas basadas en APIs bajo principios SOLID. Colaboro de cerca con equipos UX/UI, implemento design systems y despliego en AWS/GCP con metodologías ágiles.',
+  'about.p2': 'He trabajado en proyectos de <b>banca, salud y retail</b>, construyendo interfaces escalables, optimizando rendimiento e integrando arquitecturas modernas basadas en APIs bajo principios SOLID. Colaboro de cerca con equipos UX/UI, implemento design systems y despliego en AWS/GCP con metodologías ágiles. Hoy también construyo <b>productos con IA</b>: apps con LLMs basadas en tus propios datos mediante RAG, transcripción de voz en tiempo real y modelos locales o en la nube.',
   'about.edu': '🎓 Ingeniería en Informática · INACAP (2017–2020)',
 
   'exp.eyebrow': 'donde he construido cosas',
@@ -81,6 +82,7 @@ const es: Record<UIKey, string> = {
   'proj.title': 'Proyectos',
   'proj.code': 'código ↗',
   'proj.live': 'ver demo ↗',
+  'proj.site': 'sitio web ↗',
 
   'skills.eyebrow': 'la caja de herramientas',
   'skills.title': 'Stack técnico',
