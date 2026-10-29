@@ -92,6 +92,22 @@ export const experience: Job[] = [
 
 export const projects: Project[] = [
   {
+    name: 'ThumbStudio',
+    when: {
+      en: 'Personal project · AI web app · Next.js + Cloudflare',
+      es: 'Proyecto personal · App web con IA · Next.js + Cloudflare',
+    },
+    description: {
+      en: 'Generates YouTube thumbnails in the style of a channel\'s most viewed videos, without copying their ideas. It pulls the top thumbnails (Shorts excluded), extracts a style profile in the browser (k-means palette, brightness, free space for the title), and a vision LLM proposes editable concepts for your video. Images come from the visitor\'s own models (Ollama, LM Studio and ComfyUI with SDXL/FLUX + Redux running on their PC) or their own keys (Claude, Gemini, OpenAI, fal, Replicate), which never leave the browser. Includes a hardware check that suggests local or cloud models, and a YouTube-like feed to compare the results. Static site on Cloudflare Pages, with Functions and a KV cache for the YouTube API.',
+      es: 'Genera miniaturas de YouTube con el estilo de los videos más vistos de un canal, sin copiar sus ideas. Trae las miniaturas top (sin Shorts), extrae un perfil de estilo en el navegador (paleta con k-means, brillo, espacio libre para el título) y un LLM con visión propone conceptos editables para tu video. Las imágenes salen de los modelos del propio visitante (Ollama, LM Studio y ComfyUI con SDXL/FLUX + Redux corriendo en su PC) o de sus propias keys (Claude, Gemini, OpenAI, fal, Replicate), que nunca salen del navegador. Incluye una revisión del hardware que sugiere modelos locales o en la nube, y un feed tipo YouTube para comparar los resultados. Sitio estático en Cloudflare Pages, con Functions y caché en KV para la API de YouTube.',
+    },
+    stack: ['LLMs', 'Vision models', 'ComfyUI', 'Ollama', 'Next.js', 'TypeScript', 'Canvas', 'Cloudflare'],
+    links: [
+      { href: 'https://ts.dgdev.cl/', label: 'proj.site' },
+      { href: 'https://github.com/izzyll/thumbstudio-web', label: 'proj.code' },
+    ],
+  },
+  {
     name: 'Hikui Koe',
     when: {
       en: 'Personal project · AI desktop app · Electron + LLMs',
